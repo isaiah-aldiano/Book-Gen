@@ -10,8 +10,8 @@
     <script>
         //Array of books
         let serach = <%-JSON.stringify(a)%>;
-        var allBooks = new Array(); 
         
+        //Function to dynamically load book information from array into the table
         function displayBooks(serach) {
             let size = serach.length;
             const bookTable = document.querySelector('.bookTable');
@@ -85,12 +85,12 @@
 
             <h1 id="noResults" class="noResultsFound"></h1>
     </div>
-    <script>displayBooks(serach)</script>
     <script>
+        displayBooks(serach)
         const pageButton = document.querySelector("#pageSort");
         const pubButton = document.querySelector("#pubSort");
 
-        //Insert sort for publication year and pages
+        //Insert sort for page number
         pageButton.addEventListener("click", e => {
             let table = document.getElementsByClassName("bookTable");
             table = table[0];
@@ -112,6 +112,7 @@
             }
         })
 
+        //Insert sort for publication year
         pubButton.addEventListener("click", e => {
             let table = document.getElementsByClassName("bookTable");
             table = table[0];
