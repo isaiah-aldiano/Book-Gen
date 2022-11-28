@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="results.css">
+    <script type="javascript" src="basics.js"></script>
+    <title>Results</title>
+    <script>
+        //Array of books
+        let serach = <%-JSON.stringify(a)%>;
+        var allBooks = new Array(); 
+        
+        function displayBooks(serach) {
+            let size = serach.length;
+            const bookTable = document.querySelector('.bookTable');
+
+            if (size == null) {
+                document.getElementById("noResults").innerText = "No results found for search";
+            } else {
+                for (let i = 0; i < size; i++) {
+                    const newEle = document.createElement('tr');
+                    newEle.className = "bookInfo"
+                    bookTable.appendChild(newEle);
+                    newEle.innerHTML = 
+                    `<td> ${serach[i].title} </td>
+                    <td> ${serach[i].author} </td>
+                    <td> ${serach[i].year} </td>
+                    <td> ${serach[i].pages} </td>
+                    <td> <a href="http://libgen.is/book/index.php?md5=${serach[i].md5.toLowerCase()}" class="link">Link</a> </td>
+                    `;
+                }
+            }  
+        }
+    </script>
+</head>
+<body>
+    <div class="mainNav">
+        <nav>
+            <img class="logo" src="bookIcon.png" alt="">
+            <div >
+                 <h1>
+                    <a href="/">
+                        Free Book Search
+                    </a>    
+                </h1>
+            </div>
+           
+            <div class="search">
+                <form action="/bookSearch" method="post" class="searchBar">
+                    <input type="text" placeholder="Take a look! In a book!" name="search" autocomplete="off">
+                    <button type="submit"><img src="serachIcon.png" alt=""></button>
+                </form>
+            </div>
+            
+            <div class="pages">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="controls">
+        <label class="sortText">Sort by: </label>
+            <button type="button" id="pubSort">
+                Publication Year
+            </button>
+            <button type="button" id="pageSort">
+                Pages
+            </button>
+    </div>
+    <div class="resultBody">
+
+            <table class="bookTable">
+                <tr>
+                    <th style="width:40%;">Title</th>
+                    <th style="width:25%">Author(s)</th>
+                    <th>Publication Year</th>
+                    <th>Pages</th>  
+                    <th>Download</th>    
+                </tr>
+            </table>
+
+            <h1 id="noResults" class="noResultsFound"></h1>
+    </div>
+    <script>displayBooks(serach)</script>
+    <script>
+        const pageButton = document.querySelector("#pageSort");
+        const pubButton = document.querySelector("#pubSort");
+
+        //Insert sort for publication year and pages
+        pageButton.addEventListener("click", e => {
+            let table = document.getElementsByClassName("bookTable");
+            table = table[0];
+            rows = table.rows;
+            let i, j, temp, pages = 3;
+            for (i = 1; i < rows.length; i++) {
+                for (j = i; j > 1; j--) {
+                    if (i != 1) {
+                        x = parseInt(rows[j].getElementsByTagName("td")[pages].innerText, 10);
+                        y = parseInt(rows[j - 1].getElementsByTagName("td")[pages].innerText, 10);
+                        if (isNaN(y)) {
+                            y = Number.MAX_SAFE_INTEGER;
+                        }
+                        if (x < y) {
+                            rows[j].parentNode.insertBefore(rows[j], rows[j-1]);
+                        } 
+                    }
+                }
+            }
+        })
+
+        pubButton.addEventListener("click", e => {
+            let table = document.getElementsByClassName("bookTable");
+            table = table[0];
+            rows = table.rows;
+            let i, j, temp, year = 2;
+            for (i = 1; i < rows.length; i++) {
+                for (j = i; j > 1; j--) {
+                    if (i != 1) {
+                        x = parseInt(rows[j].getElementsByTagName("td")[year].innerText, 10);
+                        y = parseInt(rows[j - 1].getElementsByTagName("td")[year].innerText, 10);
+                        if (isNaN(y)) {
+                            y = Number.MAX_SAFE_INTEGER;
+                        }
+                        if (x < y) {
+                            rows[j].parentNode.insertBefore(rows[j], rows[j-1]);
+                        } 
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

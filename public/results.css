@@ -1,0 +1,155 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: rgb(33, 37, 53);
+}
+
+.mainNav {
+    background: rgb(95, 158, 160);
+    width: 100%;
+    height: 9vh;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+nav .logo {
+    width: 70px;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+nav div h1 a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0px 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-style: bold;
+
+}
+nav ul li a:hover{
+    color: gold;
+}
+
+.pages {
+    margin-left: auto;
+}
+
+.BookSeek {
+    display: flex;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: auto;
+}
+
+.search button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+.search button img {
+   width: 40px;
+   padding: 20px;
+}
+
+.searchBar {
+    width: 80%;
+    max-width: 700px;
+    background-color: rgb(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    border-radius: 60px;
+    height: 50px;
+}
+
+.searchBar input {
+    background-color: transparent;
+    border: 0;
+    outline: none;
+    flex: 1;
+    padding: 30px;
+    font-size: large;
+}
+
+.controls {
+    padding: 18px 25px;
+}
+
+.sortText {
+    color: white;
+    font-size: larger;
+    font-weight: 200;
+}
+.controls button {
+    cursor: pointer;
+    background-color: #5f9ea0;
+    color: white;
+    padding: 10px;
+    border: 0;
+    border-radius: 5%;
+}
+
+.resultBody {
+    height: 99vh;
+}
+
+.bookTableWrap {
+    color: white;
+}
+
+.bookTable {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 5px;
+    color: white;
+}
+
+.noResultsFound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+tr td {
+    border-bottom: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    border-spacing: 10px;
+}
+
+tr th {
+    border: 1px solid white;
+}
+
+.bookInfo:hover {
+    background-color: rgb(95, 158, 160);
+}
+
+.link {
+    color: white;
+    text-decoration: wavy;
+}
