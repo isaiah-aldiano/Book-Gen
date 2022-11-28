@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Book Finder</title>
+</head>
+<body>
+    <div class="mainNav">
+        <nav>
+            <img class="logo" src="bookIcon.png" alt="">
+            <a href="/" class="navTitle">
+                <h1>
+                    Free Book Search
+                </h1>
+            </a>
+            <ul>
+                <li><a href="">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="BookSeek">
+        <img src="blueLogo.png" alt="Book Seek">
+    </div>
+    <div class="search">
+        <form action="/bookSearch" method="post" class="searchBar">
+            <input type="text" placeholder="Take a look! In a book!" autocomplete="off" name="search" >
+            <button type="submit"><img src="serachIcon.png" alt=""></button>
+        </form>
+    </div>
+</body>
+</html>
