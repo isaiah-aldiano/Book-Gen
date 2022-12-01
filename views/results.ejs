@@ -9,11 +9,12 @@
     <title>Results</title>
     <script>
         //Array of books
-        let serach = <%-JSON.stringify(a)%>;
+        let search = <%-JSON.stringify(a)%>;
+        console.log(search);
         
         //Function to dynamically load book information from array into the table
-        function displayBooks(serach) {
-            let size = serach.length;
+        function displayBooks(search) {
+            let size = search.length;
             const bookTable = document.querySelector('.bookTable');
 
             if (size == null) {
@@ -24,11 +25,11 @@
                     newEle.className = "bookInfo"
                     bookTable.appendChild(newEle);
                     newEle.innerHTML = 
-                    `<td> ${serach[i].title} </td>
-                    <td> ${serach[i].author} </td>
-                    <td> ${serach[i].year} </td>
-                    <td> ${serach[i].pages} </td>
-                    <td> <a href="http://libgen.is/book/index.php?md5=${serach[i].md5.toLowerCase()}" class="link">Link</a> </td>
+                    `<td> ${search[i].title} </td>
+                    <td> ${search[i].author} </td>
+                    <td> ${search[i].year} </td>
+                    <td> ${search[i].pages} </td>
+                    <td> <a href="http://libgen.is/book/index.php?md5=${search[i].md5.toLowerCase()}" class="link">Link</a> </td>
                     `;
                 }
             }  
@@ -36,6 +37,7 @@
     </script>
 </head>
 <body>
+    <!--Nav and search bar-->
     <div class="mainNav">
         <nav>
             <img class="logo" src="bookIcon.png" alt="">
@@ -62,15 +64,18 @@
         </nav>
     </div>
 
+    <!--Sorting buttons-->
     <div class="controls">
         <label class="sortText">Sort by: </label>
-            <button type="button" id="pubSort">
-                Publication Year
-            </button>
-            <button type="button" id="pageSort">
-                Pages
-            </button>
+        <button type="button" id="pubSort">
+            Publication Year
+        </button>
+        <button type="button" id="pageSort">
+            Pages
+        </button>
     </div>
+
+    <!--Table of books-->
     <div class="resultBody">
 
             <table class="bookTable">
@@ -86,7 +91,7 @@
             <h1 id="noResults" class="noResultsFound"></h1>
     </div>
     <script>
-        displayBooks(serach)
+        displayBooks(search)
         const pageButton = document.querySelector("#pageSort");
         const pubButton = document.querySelector("#pubSort");
 

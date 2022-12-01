@@ -19,14 +19,18 @@ app.get('/', async (req, res) => {
 
 //Post request to display data from libgen api
 //incase page loads infinitely change out mirror with one of these
+// Wiki of mirror links - https://librarygenesis.net
+
 // http://gen.lib.rus.ec
 // http://libgen.rocks
 // http://libgen.lol
 // http://libgen.ee
+// http://libgen.is
+// http://libgen.st - working 12/1
 app.post('/bookSearch', async (req, res) => {
     try {
         const options = {
-            mirror: 'http://libgen.is',
+            mirror: 'http://libgen.st',
             query: req.body.search,
             count: 45
         }
